@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proshenjit Sarker</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        :root {
+            /* -- GEAR ANIMATION CONTROLS -- */
+            /* Speed: Higher value = slower rotation (e.g., 5s, 10s, 20s). */
+            --cursor-gear-speed: 4s;
+            --header-gear-speed: 4s;
+
+            /* Color: Any valid CSS color (e.g., #FFFFFF, #6366F1, rgb(255, 0, 0)). */
+            --cursor-gear-color: #095aa0;
+            --header-gear-color: #049da2;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #111827;
+            color: #E5E7EB;
+            cursor: none;
+            overflow-x: hidden;
+        }
+
+        /* Custom Cursor */
+        .cursor-dot {
+            pointer-events: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
+        }
+
+        #cursor-gear {
+            pointer-events: none;
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            z-index: 9999;
+            transition: transform 0.2s ease-out;
+        }
+
+        #cursor-gear svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--cursor-gear-color);
+            /* Controlled by variable */
+            mix-blend-mode: difference;
+            animation: rotate-gear var(--cursor-gear-speed) linear infinite;
+            /* Controlled by variable */
+        }
+
+        @keyframes rotate-gear {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Interactive element hover effect */
+        .interactive-hover {
+            transition: transform 0.2s ease;
+        }
+
+        .interactive-hover:hover {
+            transform: scale(1.05);
+        }
+
+        /* Section transition animation */
+        .section-hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1F2937;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #4F46E5;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6366F1;
+        }
+
+        /* Glassmorphism effect */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Modal styles */
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+
+        body.modal-active {
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+        .modal-content {
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        /* Spinner for loading */
+        .loader {
+            border-top-color: #6366F1;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Loading indicator for research section */
+        #research-loader {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body class="leading-normal tracking-normal">
+
+    <div class="cursor-dot"></div>
+    <div id="cursor-gear">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path
+                d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12-.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49.42l.38-2.65c.61-.25 1.17-.59-1.69-.98l2.49 1c.23.09.49 0 .61.22l2 3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+        </svg>
+    </div>
+
+    <header class="fixed w-full z-30 top-0 glass-effect">
+        <div class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 py-2">
+            <div class="pl-4 flex items-center">
+                <a class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl flex items-center"
+                    href="#home">
+                    S<svg class="w-7 h-7 ml-0"
+                        style="animation: rotate-gear var(--header-gear-speed) linear infinite; fill: var(--header-gear-color);"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12-.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49.42l.38-2.65c.61-.25 1.17-.59-1.69-.98l2.49 1c.23.09.49 0 .61.22l2 3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                    </svg>rker
+
+                </a>
+            </div>
+            <div class="block lg:hidden pr-4">
+                <button id="nav-toggle"
+                    class="flex items-center p-1 text-white hover:text-gray-400 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+                    <svg class="fill-current h-6 w-6" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                        <title>Menu</title>
+                        <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-3z" />
+                    </svg>
+                </button>
+            </div>
+            <div class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 bg-gray-900 lg:bg-transparent text-center p-4 lg:p-0 z-20"
+                id="nav-content">
+                <ul class="list-reset lg:flex justify-end flex-1 items-center">
+                    <li class="mr-3"><a
+                            class="inline-block text-white no-underline hover:text-gray-400 hover:text-gray-400 hover:text-underline py-2 px-4 interactive-hover"
+                            href="#home">Home</a></li>
+                    <li class="mr-3"><a
+                            class="inline-block text-white no-underline hover:text-gray-400 hover:text-underline py-2 px-4 interactive-hover"
+                            href="#research">Research</a></li>
+                    <li class="mr-3"><a
+                            class="inline-block text-white no-underline hover:text-gray-400 hover:text-underline py-2 px-4 interactive-hover"
+                            href="#experience">Experience</a></li>
+
+                    <li class="mr-3"><a
+                            class="inline-block text-white no-underline hover:text-gray-400 hover:text-underline py-2 px-4 interactive-hover"
+                            href="#projects">Projects</a></li>
+
+                    <li class="mr-3"><a
+                            class="inline-block text-white no-underline hover:text-gray-400 hover:text-underline py-2 px-4 interactive-hover"
+                            href="#education">Education</a></li>
+                    <li class="mr-3"><a
+                            class="inline-block text-white no-underline hover:text-gray-400 hover:text-underline py-2 px-4 interactive-hover"
+                            href="#biodata">Bio Data</a></li>
+
+                </ul>
+                <a href="Files/Proshenjit Sarker Portfolio.pdf" download="Proshen_CV.pdf"
+                    class="mx-auto lg:mx-0 mr-4 lg:mr-8 bg-indigo-600 text-white font-semibold rounded-full mt-4 lg:mt-0 py-2 px-5 shadow opacity-80 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out interactive-hover">
+                    Download CV
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="pt-24 min-h-screen">
+            <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+                <div class="flex flex-col w-full md:w-3/5 justify-center items-start text-center md:text-left">
+                    <p class="uppercase tracking-loose w-full">Welcome to my portfolio</p>
+                    <h1 class="my-4 text-5xl font-bold leading-tight">
+                        Hi, I'm Proshenjit Sarker
+                    </h1>
+                    <p class="leading-normal text-2xl mb-8">
+                        Bridging Machine Learning and Healthcare Through Interpretable Intelligence.
+                    </p>
+                    <div class="flex w-full justify-center md:justify-start pb-24 lg:pb-0 fade-in">
+                        <!-- Gmail -->
+                        <a href="mailto:prosensarker4@gmail.com" class="interactive-hover">
+                            <img class="h-10 w-10 mr-4 hover:opacity-80 transition"
+                                src="https://cdn-icons-png.flaticon.com/512/281/281769.png" alt="Gmail Icon">
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/proshen123/" target="_blank" class="interactive-hover">
+                            <img class="h-10 w-10 mr-4 hover:opacity-80 transition"
+                                src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+                        </a>
+
+                        <!-- GitHub -->
+                        <a href="https://github.com/prosensarker4" target="_blank" class="interactive-hover">
+                            <img class="h-10 w-10 mr-4 hover:opacity-80 transition" style="filter: invert(1);"
+                                src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+                        </a>
+
+                        <!-- Google Scholar -->
+                        <a href="https://scholar.google.com/citations?user=xaeKZvUAAAAJ&hl=en" target="_blank"
+                            class="interactive-hover">
+                            <img class="h-10 w-10 mr-4 hover:opacity-80 transition" src="Files/google scholars icon.png"
+                                alt="Google Scholar">
+                        </a>
+
+                        <!-- ORCID -->
+                        <a href="https://orcid.org/0009-0008-9502-2152" target="_blank" class="interactive-hover">
+                            <img class="h-10 w-10 hover:opacity-80 transition"
+                                src="https://upload.wikimedia.org/wikipedia/commons/0/06/ORCID_iD.svg" alt="ORCID">
+                        </a>
+                    </div>
+                </div>
+                <div class="w-full md:w-2/5 py-6 text-center">
+                    <img class="w-2/3 md:w-2/3 z-50 mx-auto rounded-full shadow-2xl" src="Files/Proshejit Circle.png"
+                        alt="Proshenjit Picture">
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="research" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center">
+                    Rese
+                    <svg class="w-7 h-7 ml-0"
+                        style="animation: rotate-gear var(--header-gear-speed) linear infinite; fill: var(--header-gear-color);"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12-.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49.42l.38-2.65c.61-.25 1.17-.59-1.69-.98l2.49 1c.23.09.49 0 .61.22l2 3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                    </svg>
+                    rch & Public
+                    <svg class="w-7 h-7 ml-0"
+                        style="animation: rotate-gear var(--header-gear-speed) linear infinite; fill: var(--header-gear-color);"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12-.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49.42l.38-2.65c.61-.25 1.17-.59-1.69-.98l2.49 1c.23.09.49 0 .61.22l2 3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                    </svg>
+                    tions
+                </h2>
+                <div id="research-container">
+                    <div id="research-loader" class="text-center">
+                        <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12">
+                        </div>
+                        <span class="ml-4">Loading publications...</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="experience" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center">
+                    Experience & Certific
+                    <svg class="w-7 h-7 ml-0"
+                        style="animation: rotate-gear var(--header-gear-speed) linear infinite; fill: var(--header-gear-color);"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12-.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49.42l.38-2.65c.61-.25 1.17-.59-1.69-.98l2.49 1c.23.09.49 0 .61.22l2 3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                    </svg>
+                    tion
+                </h2>
+                <div class="relative wrap overflow-hidden p-10 h-full">
+                    <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%">
+                    </div>
+                    <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-indigo-600 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+                        </div>
+                        <div class="order-1 glass-effect rounded-lg shadow-xl w-5/12 px-6 py-4 interactive-hover">
+                            <h3 class="font-bold text-white text-xl">Research Assistant</h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">(June 2025 -
+                                Present)</p>
+                            <p class="text-sm mt-2 text-gray-400" style="text-align: justify;">Project Manager: Prof. S.
+                                M. Shamsul Alam <br>
+                                Topic: Developing Campus Security System using Jetson Developer Kit, YOLO, Viola Jones
+                                Algorithms.</p>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-indigo-600 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto text-white font-semibold text-lg">2</h1>
+                        </div>
+                        <div class="order-1 glass-effect rounded-lg shadow-xl w-5/12 px-6 py-4 interactive-hover">
+                            <h3 class="font-bold text-white text-xl">Industrial Training: Khulna 225 MW Combined Cycle
+                                Power Plant</h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">
+                                (27 Dec 2022 - 16 Jan 2023)</p>
+                            <p class="text-sm mt-2 text-gray-400" style="text-align: justify;">The Khulna 225 MW
+                                Combined Cycle Power Plant is a
+                                power generation facility in Bangladesh that converts a former peaking
+                                power plant into a more efficient combined cycle station. The project, executed by
+                                Northwest Power Generation
+                                Company
+                                Ltd. (NWPGCL), adds a 75 MW steam plant to the existing 150 MW gas-fired plant,
+                                resulting in a total capacity of
+                                225 MW.</p>
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-indigo-600 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto font-semibold text-lg text-white">3</h1>
+                        </div>
+                        <div class="order-1 glass-effect rounded-lg shadow-xl w-5/12 px-6 py-4 interactive-hover">
+                            <h3 class="font-bold text-white text-xl">Digital Marketing</h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">
+                                EDGE Digital Marketing Program
+                            </p>
+                            <p class="text-sm mt-2 text-gray-400" style="text-align: justify;">
+                                Enhancing Digital Government and Economy (EDGE) is a project of the Bangladesh Computer
+                                Council (BCC) under
+                                the ICT Division.
+                            </p>
+
+                            <!-- ✅ QR Code Section -->
+                            <div class="mt-4 flex items-center space-x-3">
+                                <img src="Files/DM QR.png" alt="EDGE Certificate QR Code"
+                                    class="w-40 h-40  border border-gray-600 hover:scale-105 transition-transform duration-300" />
+                                <p class="text-gray-400 text-xs">
+                                    Scan to verify certificate authenticity
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </section>
+
+
+        <section id="projects" class="py-20">
+            <div class="container mx-auto px-4">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold">My Projects</h2>
+                    <button id="suggest-project-btn"
+                        class="mt-4 bg-indigo-600 text-white font-bold rounded-full py-3 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out interactive-hover">
+                        ✨ Suggest a Project Idea
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+                    <!-- Project 1 -->
+                    <div class="glass-effect rounded-lg overflow-hidden interactive-hover">
+                        <video class="w-full h-60 object-contain shadow" autoplay muted loop controls>
+                            <source src="Files/AES Encryption.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-left">Developing Smartphone Application for Multiformat
+                                Data
+                                Encryption</h3>
+                            <p class="mt-2 text-gray-400 text-justify">
+                                This project is a part of my undergraduate thesis work. Although it was a group project,
+                                I was
+                                solely responsible for developing the entire application code. The APK securely encrypts
+                                images
+                                and text, storing them as cipher data decryptable only within the app.
+                            </p>
+                            <a href="https://doi.org/10.1109/ECCE64574.2025.11013389" target="_blank"
+                                class="inline-block mt-4 text-indigo-400 hover:text-indigo-300">More about Project
+                                &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass-effect rounded-lg overflow-hidden interactive-hover">
+                        <video class="w-full h-60 object-contain shadow" autoplay muted loop controls>
+                            <source src="Files/Height Measure Machine.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold">Height Measure Machine</h3>
+                            <p class="mt-2 text-gray-400 text-justify">
+                                I have developed an Arduino UNO–based Smart Height Measurement Machine that determines
+                                an
+                                object's height without physical contact using trigonometric calculations and an
+                                ultrasonic
+                                sensor (HC-SR04). The system is controlled via an Android app and compensates for
+                                temperature
+                                effects on sound velocity for accuracy.
+                            </p>
+                            <a href="https://drive.google.com/file/d/1zmb33Hgb8K_b45M7heZumZIqrc6yito3/view?usp=sharing"
+                                target="_blank" class="inline-block mt-4 text-indigo-400 hover:text-indigo-300">More
+                                about
+                                Project &rarr;</a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <div class="glass-effect rounded-lg overflow-hidden interactive-hover">
+                        <video class="w-full h-60 object-contain shadow" autoplay muted loop controls>
+                            <source src="Files/CRC.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold">Cyclic Redundancy Check Simulator</h3>
+                            <p class="mt-2 text-gray-400 text-justify">
+                                This project was developed under the course CSE 3252: Computer Network Security
+                                (Sessional). We
+                                created a CRC simulator that transmits and receives binary data. If no error occurs, the
+                                receiver shows a syndrome of 000; otherwise, a different syndrome indicates an error.
+                            </p>
+                            <a href="https://drive.google.com/file/d/1iheupf0ugTB23p2_e8VsSTz8QVTEly09/view?usp=sharing"
+                                target="_blank" class="inline-block mt-4 text-indigo-400 hover:text-indigo-300">More
+                                about
+                                Project &rarr;</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="education" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center">
+                    Educ
+                    <svg class="w-7 h-7 ml-0"
+                        style="animation: rotate-gear var(--header-gear-speed) linear infinite; fill: var(--header-gear-color);"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12-.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49.42l.38-2.65c.61-.25 1.17-.59-1.69-.98l2.49 1c.23.09.49 0 .61.22l2 3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                    </svg>
+                    tion
+                </h2>
+                <div class="relative wrap overflow-hidden p-10 h-full">
+                    <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%">
+                    </div>
+                    <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-indigo-600 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto font-semibold text-lg text-white">1</h1>
+                        </div>
+                        <div class="order-1 glass-effect rounded-lg shadow-xl w-5/12 px-6 py-4 interactive-hover">
+                            <h3 class="font-bold text-white text-xl">M.Sc. in Electronics and Communication Engineering
+                            </h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">Khulna
+                                University (2024
+                                - Present)</p>
+                            <p class="text-sm mt-2 text-gray-400">Thesis Topic: Jetson Based Campus Security System
+                                using CCTV
+                                Footage.</p>
+                        </div>
+                    </div>
+
+                    <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-indigo-600 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto text-white font-semibold text-lg">2</h1>
+                        </div>
+                        <div class="order-1 glass-effect rounded-lg shadow-xl w-5/12 px-6 py-4 interactive-hover">
+                            <h3 class="font-bold text-white text-xl">B.Sc. in Electronics and Communication Engineering
+                            </h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">Khulna
+                                University (2019
+                                - 2023)</p>
+                            <p class="text-sm mt-2 text-gray-400">Thesis Topic: Multi Format Data Encrytion using
+                                Modified AES
+                                on different Platform.</p>
+                        </div>
+                    </div>
+                    <div class="mb-8 flex justify-between items-center w-full right-timeline">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-indigo-600 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto font-semibold text-lg text-white">3</h1>
+                        </div>
+                        <div class="order-1 glass-effect rounded-lg shadow-xl w-5/12 px-6 py-4 interactive-hover">
+                            <h3 class="font-bold text-white text-xl">Higher Secondary Certificate</h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">Digraj Degree
+                                COllege,
+                                Mongla (2018)</p>
+                            <p class="text-sm mt-2 text-gray-400">Background: Science</p>
+                        </div>
+                    </div>
+                    <div class="mb-8 flex justify-between flex-row-reverse items-center w-full left-timeline">
+                        <div class="order-1 w-5/12"></div>
+                        <div class="z-20 flex items-center order-1 bg-indigo-600 shadow-xl w-8 h-8 rounded-full">
+                            <h1 class="mx-auto text-white font-semibold text-lg">4</h1>
+                        </div>
+                        <div class="order-1 glass-effect rounded-lg shadow-xl w-5/12 px-6 py-4 interactive-hover">
+                            <h3 class="font-bold text-white text-xl">Secondary School Certificate</h3>
+                            <p class="text-sm leading-snug tracking-wide text-gray-300 text-opacity-100">Digraj High
+                                School,
+                                Mongle (2015)</p>
+                            <p class="text-sm mt-2 text-gray-400">Background: Science</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="biodata" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-4xl font-bold text-center mb-12 flex items-center justify-center">
+                    Bio D
+                    <svg class="w-7 h-7 ml-0"
+                        style="animation: rotate-gear var(--header-gear-speed) linear infinite; fill: var(--header-gear-color);"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path
+                            d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12-.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49.42l.38-2.65c.61-.25 1.17-.59-1.69-.98l2.49 1c.23.09.49 0 .61.22l2 3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
+                    </svg>
+                    ta
+                </h2>
+                <div class="glass-effect rounded-lg p-8 lg:p-12 flex flex-col md:flex-row items-center gap-8">
+                    <div class="md:w-3/3 text-center md:text-left">
+                        <h3 class="text-3xl font-bold text-white mb-4">About Me</h3>
+                        <p class="text-gray-300 leading-relaxed" style="text-align: justify;">
+                            Proshenjit Sarker has completed his Bachelor of Science in Electronics and Communication
+                            Engineering from Khulna University, Khulna, Bangladesh, and is currently pursuing his Master
+                            of Science degree in the same discipline at the same institution. His academic and research
+                            interests span machine learning, classification techniques, metaheuristic algorithms, and
+                            SHAP (Shapley Additive Explanations) analysis. He is particularly focused on applying these
+                            methods to healthcare data analytics and predictive modeling to develop efficient and
+                            interpretable machine learning solutions for real-world problems. </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section id="career" class="py-20">
+            <div class="container mx-auto px-4 text-center">
+                <h2 class="text-4xl font-bold mb-8">Career Path Advisor</h2>
+                <div class="max-w-2xl mx-auto">
+                    <p class="text-gray-400 mb-4">Describe your career goals or a skill you want to develop. Our AI
+                        advisor will provide some suggestions!</p>
+                    <textarea id="career-input"
+                        class="w-full h-24 p-4 rounded-lg bg-gray-800 border border-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        placeholder="e.g., I want to transition from software engineering to a machine learning role, focusing on natural language processing."></textarea>
+                    <button id="get-advice-btn"
+                        class="mt-4 bg-indigo-600 text-white font-bold rounded-full py-3 px-8 shadow opacity-75 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out interactive-hover">✨
+                        Get Career Advice</button>
+                    <div id="advice-output" class="mt-8 text-left"></div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-900">
+
+        <div class="text-center py-4 bg-gray-900 text-gray-500 text-sm">
+            © 2025 Proshenjit Sarker. All Rights Reserved.
+        </div>
+    </footer>
+
+    <div id="project-modal"
+        class="modal pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center opacity-0 transition-opacity">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-75"></div>
+        <div class="modal-container bg-gray-800 w-11/12 md:max-w-2xl mx-auto rounded-lg shadow-lg z-50 overflow-y-auto">
+            <div
+                class="modal-close absolute top-0 right-0 cursor-pointer flex flex-col items-center mt-4 mr-4 text-white text-sm z-50">
+                <svg class="fill-current text-white" xmlns="http://www.w3.org/2000/svg" width="18" height="18"
+                    viewBox="0 0 18 18">
+                    <path
+                        d="M14.53 4.53l-1.06-1.06L9 7.94 4.53 3.47 3.47 4.53 7.94 9l-4.47 4.47 1.06 1.06L9 10.06l4.47 4.47 1.06-1.06L10.06 9z">
+                    </path>
+                </svg>
+                <span class="text-sm">(Esc)</span>
+            </div>
+            <div id="modal-content" class="modal-content py-4 text-left px-6">
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Hamburger Menu
+        document.getElementById('nav-toggle').onclick = function () {
+            document.getElementById("nav-content").classList.toggle("hidden");
+        }
+
+        // Custom Cursor
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorGear = document.getElementById('cursor-gear');
+        const colors = ['#f43f5e', '#ec4899', '#d946ef', '#a855f7', '#8b5cf6', '#6366f1', '#3b82f6'];
+        let lastTrailTime = 0;
+        const trailCooldown = 10; // milliseconds
+
+        window.addEventListener('mousemove', function (e) {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            cursorDot.style.left = `${posX}px`;
+            cursorDot.style.top = `${posY}px`;
+
+            cursorGear.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+
+            // Throttled trail effect
+            const now = Date.now();
+            if (now - lastTrailTime > trailCooldown) {
+                lastTrailTime = now;
+                const trailParticle = document.createElement('div');
+                trailParticle.style.position = 'fixed';
+                trailParticle.style.pointerEvents = 'none';
+                trailParticle.style.borderRadius = '50%';
+                trailParticle.style.zIndex = '9997'; // Below cursor and sparks
+                trailParticle.style.left = `${posX}px`;
+                trailParticle.style.top = `${posY}px`;
+
+                const size = Math.random() * 6 + 2;
+                trailParticle.style.width = `${size}px`;
+                trailParticle.style.height = `${size}px`;
+                trailParticle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                document.body.appendChild(trailParticle);
+
+                trailParticle.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                    { transform: 'translate(-50%, -50%) scale(0)', opacity: 0 }
+                ], {
+                    duration: 800,
+                    easing: 'ease-out',
+                });
+
+                setTimeout(() => {
+                    trailParticle.remove();
+                }, 800);
+            }
+        });
+
+        // Cursor animation on hover
+        const interactiveElements = document.querySelectorAll('a, button, .interactive-hover');
+        interactiveElements.forEach(el => {
+            el.addEventListener('mouseover', () => {
+                cursorGear.style.transform = 'scale(1.3)';
+            });
+            el.addEventListener('mouseout', () => {
+                cursorGear.style.transform = 'scale(1)';
+            });
+        });
+
+        // --- MODIFICATION START: Updated ScrollReveal Animations ---
+        const sr = ScrollReveal({
+            distance: '50px',
+            duration: 1500,
+            easing: 'cubic-bezier(0.5, 0, 0, 1)',
+            reset: false,
+        });
+
+        // Home Section
+        sr.reveal('#home h1, #home p', {
+            origin: 'bottom',
+            interval: 200
+        });
+        sr.reveal('#home img', {
+            origin: 'right'
+        });
+
+        // Animate all section titles
+        sr.reveal('section h2', { origin: 'top', viewFactor: 0.4 });
+
+        // Bio Data animation
+        sr.reveal('#biodata .glass-effect', { origin: 'bottom', viewFactor: 0.4 });
+
+        // Education timeline animation
+        sr.reveal('#education .right-timeline', { origin: 'right', viewFactor: 0.4, interval: 300 });
+        sr.reveal('#education .left-timeline', { origin: 'left', viewFactor: 0.4, interval: 300 });
+
+        // Experience timeline animation
+        sr.reveal('#experience .right-timeline', { origin: 'right', viewFactor: 0.4, interval: 300 });
+        sr.reveal('#experience .left-timeline', { origin: 'left', viewFactor: 0.4, interval: 300 });
+
+        // Research & Publications animation
+        sr.reveal('#research .glass-effect', { origin: 'bottom', viewFactor: 0.2, interval: 200 });
+
+        // Projects animation
+        sr.reveal('#projects #suggest-project-btn', { origin: 'top', delay: 200 });
+        sr.reveal('#projects .grid > .glass-effect', { origin: 'bottom', interval: 200, viewFactor: 0.2 });
+
+        // Career Advisor animation
+        sr.reveal('#career p, #career textarea, #career button', { origin: 'bottom', interval: 200, viewFactor: 0.4 });
+        // --- MODIFICATION END ---
+
+        // Hide nav on scroll
+        var lastScrollTop = 0;
+        var navbar = document.querySelector('header');
+        window.addEventListener('scroll', function () {
+            var scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                navbar.style.top = '-80px';
+            } else {
+                navbar.style.top = '0';
+            }
+            lastScrollTop = scrollTop;
+        });
+
+        // --- NEW: Dynamic Publications from JSON ---
+            async function loadPublications() {
+                const researchContainer = document.getElementById('research-container');
+
+                try {
+                    const response = await fetch('Files/Publications.json');
+                    if (!response.ok) {
+                        throw new Error('Failed to load publications');
+                    }
+
+                    const publications = await response.json();
+
+                    // Remove loader
+                    researchContainer.innerHTML = '';
+
+                    // Create publication elements
+                    publications.forEach((pub, index) => {
+                        const pubElement = document.createElement('div');
+                        pubElement.className = 'glass-effect p-6 rounded-lg interactive-hover flex flex-col md:flex-row items-center gap-6 mb-8';
+
+                        // Format the display based on the actual JSON structure
+                        const publicationInfo = pub.publicationInfo || pub.journal || '';
+                        const metrics = pub.metrics || '';
+
+                        // Combine publication info and metrics
+                        const displayText = metrics ?
+                            `${publicationInfo} ${metrics}` :
+                            publicationInfo;
+
+                        pubElement.innerHTML = `
+                <img src="${pub.imageUrl}" alt="${pub.title} Visual"
+                    class="w-32 h-32 md:w-80 md:h-80 object-cover rounded-lg flex-shrink-0">
+                <div class="text-center md:text-left">
+                    <h3 class="text-xl font-bold">
+                        <b style="color: #9ba1a1;">${String(index + 1).padStart(2, '0')}. ${pub.type}:</b> ${pub.title}
+                    </h3>
+                    <p class="text-gray-400 mt-1" style="color: rgb(6, 155, 140);">
+                        ${displayText}
+                    </p>
+                    <p class="mt-2" data-original-text="${pub.abstract}" style="text-align: justify;">
+                        <b>Abstract:</b> ${pub.abstract}
+                    </p>
+                    <div class="mt-4">
+                        <a href="${pub.doiUrl}" target="_blank" class="inline-block text-indigo-400 hover:text-indigo-300">
+                            ${pub.type === 'Proceedings' ? 'See in Proceedings' : 'See in Journal'} &rarr;
+                        </a>
+                        <button class="summarize-btn ml-4 text-indigo-400 hover:text-indigo-300">✨ Summarize with AI</button>
+                    </div>
+                    ${pub.coAuthor ? `<p class="mt-2 text-sm text-gray-500"><em>${pub.coAuthor}</em></p>` : ''}
+                </div>
+            `;
+
+                        researchContainer.appendChild(pubElement);
+                    });
+
+                    // Reinitialize ScrollReveal for new elements
+                    sr.reveal('#research .glass-effect', { origin: 'bottom', viewFactor: 0.2, interval: 200 });
+
+                    // Reattach event listeners to the new buttons
+                    attachSummarizeListeners();
+
+                } catch (error) {
+                    console.error('Error loading publications:', error);
+                    researchContainer.innerHTML = `
+            <div class="text-center text-red-400">
+                <p>Failed to load publications. Please try again later.</p>
+                <button onclick="loadPublications()" class="mt-4 bg-indigo-600 text-white font-bold rounded-full py-2 px-4 interactive-hover">
+                    Retry
+                </button>
+            </div>
+        `;
+                }
+            }
+
+        // Load publications when the page loads
+        document.addEventListener('DOMContentLoaded', loadPublications);
+
+        // --- Gemini API Integration ---
+
+        const API_KEY = "AIzaSyCWiRFxSfHfKAhFY2_yULkXjUpXjWnwunU"; // your key
+        const MODEL = "gemini-2.0-flash"; // Use the model you want
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
+
+        // Generic function to call the Gemini API
+        async function callGeminiAPI(prompt, elementToUpdate) {
+            // Show loader
+            elementToUpdate.innerHTML = `
+        <div class="flex justify-center items-center">
+            <div class="loader ease-linear rounded-full border-4 border-t-4 border-gray-200 h-12 w-12"></div>
+        </div>
+    `;
+
+            const payload = {
+                contents: [{ parts: [{ text: prompt }] }]
+            };
+
+            try {
+                const response = await fetch(API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+                const text = result.candidates?.[0]?.content?.parts?.[0]?.text;
+
+                if (text) {
+                    // Simple markdown to HTML conversion
+                    let htmlText = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    htmlText = htmlText.replace(/\*(.*?)\*/g, '<em>$1</em>');
+                    htmlText = htmlText.replace(/\n/g, '<br>');
+                    elementToUpdate.innerHTML = htmlText;
+                } else {
+                    elementToUpdate.textContent = 'Sorry, I could not generate a response. Please try again.';
+                }
+
+            } catch (error) {
+                console.error("Error calling Gemini API:", error);
+                elementToUpdate.textContent = 'An error occurred. Please check the console for details.';
+            }
+        }
+
+        // 1. Research Summarizer
+        function attachSummarizeListeners() {
+            document.querySelectorAll('.summarize-btn').forEach(button => {
+                button.addEventListener('click', (e) => {
+                    const publicationCard = e.target.closest('.glass-effect');
+                    const textElement = publicationCard.querySelector('p[data-original-text]');
+                    const originalText = textElement.dataset.originalText;
+
+                    if (button.textContent.includes('Summarize')) {
+                        const prompt = `Summarize the following research abstract in one simple sentence: "${originalText}"`;
+                        callGeminiAPI(prompt, textElement);
+                        button.innerHTML = '✨ Show Original';
+                    } else {
+                        textElement.textContent = originalText;
+                        button.innerHTML = '✨ Summarize with AI';
+                    }
+                });
+            });
+        }
+
+
+        // 2. Project Idea Generator
+        const modal = document.getElementById('project-modal');
+        const modalContent = document.getElementById('modal-content');
+
+        document.getElementById('suggest-project-btn').addEventListener('click', () => {
+            const skills = "AI, Machine Learning, Predictive Analytics, Python, JavaScript, Web Development, Data Analysis";
+            const prompt = `Based on the following skills: ${skills}, suggest a creative and impactful project idea. Provide a title, a short description, and a list of key technologies to use. Format the response with markdown.`;
+            callGeminiAPI(prompt, modalContent);
+            toggleModal(true);
+        });
+
+        const overlay = document.querySelector('.modal-overlay');
+        overlay.addEventListener('click', () => toggleModal(false));
+
+        var closemodal = document.querySelectorAll('.modal-close');
+        for (var i = 0; i < closemodal.length; i++) {
+            closemodal[i].addEventListener('click', () => toggleModal(false));
+        }
+
+        document.onkeydown = function (evt) {
+            evt = evt || window.event;
+            var isEscape = false;
+            if ("key" in evt) {
+                isEscape = (evt.key === "Escape" || evt.key === "Esc");
+            } else {
+                isEscape = (evt.keyCode === 27);
+            }
+            if (isEscape && document.body.classList.contains('modal-active')) {
+                toggleModal(false);
+            }
+        };
+
+        function toggleModal(show) {
+            const body = document.querySelector('body');
+            if (show) {
+                modal.classList.remove('opacity-0', 'pointer-events-none');
+                body.classList.add('modal-active');
+            } else {
+                modal.classList.add('opacity-0', 'pointer-events-none');
+                body.classList.remove('modal-active');
+            }
+        }
+
+        // 3. Career Path Advisor
+        document.getElementById('get-advice-btn').addEventListener('click', () => {
+            const careerInput = document.getElementById('career-input').value;
+            const adviceOutput = document.getElementById('advice-output');
+
+            if (careerInput.trim() === '') {
+                adviceOutput.innerHTML = '<p class="text-red-400">Please enter your career goals first.</p>';
+                return;
+            }
+
+            const prompt = `I'm a researcher and developer with skills in AI, Machine Learning, and Web Development. My goal is: "${careerInput}". Act as a career coach and provide 3-4 actionable steps or learning suggestions to help me achieve this goal. Format the response clearly with markdown.`;
+            callGeminiAPI(prompt, adviceOutput);
+
+        });
+
+        // 4. Click Spark Effect
+        document.addEventListener('click', function (e) {
+            const sparkCount = 50;
+            // The colors array is now defined above for both effects
+
+            for (let i = 0; i < sparkCount; i++) {
+                const spark = document.createElement('div');
+                spark.style.position = 'fixed';
+                spark.style.pointerEvents = 'none';
+                spark.style.borderRadius = '50%';
+                spark.style.zIndex = '9998'; // Below cursor
+
+                spark.style.left = `${e.clientX}px`;
+                spark.style.top = `${e.clientY}px`;
+
+                const size = Math.random() * 8 + 2;
+                spark.style.width = `${size}px`;
+                spark.style.height = `${size}px`;
+
+                spark.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 50 + 20;
+                const translateX = Math.cos(angle) * distance;
+                const translateY = Math.sin(angle) * distance;
+
+                spark.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                    { transform: `translate(calc(-50% + ${translateX}px), calc(-50% + ${translateY}px)) scale(0)`, opacity: 0 }
+                ], {
+                    duration: 600,
+                    easing: 'cubic-bezier(0.25, 1, 0.5, 1)',
+                });
+
+                document.body.appendChild(spark);
+
+                setTimeout(() => {
+                    spark.remove();
+                }, 600);
+            }
+        });
+
+        // Smooth scrolling for anchor links to prevent conflict with ScrollReveal
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                const targetElement = href.length > 1 ? document.querySelector(href) : null;
+
+                if (targetElement) {
+                    e.preventDefault();
+
+                    // Manually reveal the section to guarantee visibility before scrolling
+                    if (targetElement.classList.contains('section-hidden')) {
+                        targetElement.classList.remove('section-hidden');
+                        targetElement.classList.add('section-visible');
+                    }
+
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Close mobile nav if it's open
+                    const navContent = document.getElementById("nav-content");
+                    if (!navContent.classList.contains("hidden")) {
+                        navContent.classList.add("hidden");
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>
