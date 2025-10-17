@@ -916,8 +916,8 @@
 
         // --- Gemini API Integration ---
 
-        const API_KEY = "YOUR_API_KEY"; // IMPORTANT: Replace with your actual key
-        const MODEL = "gemini-pro"; // Use the model you want
+        const API_KEY = "AIzaSyCWiRFxSfHfKAhFY2_yULkXjUpXjWnwunU"; // your key
+        const MODEL = "gemini-2.0-flash"; // Use the model you want
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent?key=${API_KEY}`;
 
         // Generic function to call the Gemini API
@@ -970,15 +970,13 @@
                     const publicationCard = e.target.closest('.glass-effect');
                     const textElement = publicationCard.querySelector('p[data-original-text]');
                     const originalText = textElement.dataset.originalText;
-                    const fullAbstract = `<b>Abstract:</b> ${originalText}`;
-
 
                     if (button.textContent.includes('Summarize')) {
                         const prompt = `Summarize the following research abstract in one simple sentence: "${originalText}"`;
                         callGeminiAPI(prompt, textElement);
                         button.innerHTML = '✨ Show Original';
                     } else {
-                        textElement.innerHTML = fullAbstract;
+                        textElement.textContent = originalText;
                         button.innerHTML = '✨ Summarize with AI';
                     }
                 });
@@ -1074,3 +1072,4 @@
 </body>
 
 </html>
+
