@@ -1,0 +1,79 @@
+[
+  {
+    "id": "01",
+    "type": "Article",
+    "isCoAuthor": false,
+    "title": "Breast cancer prediction with feature-selected XGB classifier, optimized by metaheuristic algorithms",
+    "publicationInfo": "Journal of Big Data, Vol. 12, Article Num. 78 (2025).",
+    "metrics": "IF: 6.4 (2024), 5 Years IF: 13.4 (2024)",
+    "abstract": "Breast cancer, caused by uncontrolled cell growth in milk ducts or lobules, has the highest mortality rate among women worldwide, with Asia reporting the most deaths. Early detection improves survival rates and reduces treatment costs. This study aims to develop a feature selection-based classifier to enhance breast cancer prediction, using a minimal dataset to maximize performance. Earlier works on the Breast Cancer Coimbra dataset used many features but failed to achieve high accuracy or explain misclassifications. We addressed this by reducing the features while maintaining performance. A Wrapper Model with Metaheuristic Algorithms: Whale Optimization, Bald Eagle Search, and Sea Lion Optimization and Extreme Gradient Boost Classifier. SHAP explained feature importance for both overall and individual predictions. Our study achieved F-scores of 97.43%, 95%, and 94.74% for SLOA_XGB, BESA_XGB, and WOA_XGB, respectively, on the Breast Cancer Coimbra dataset. Each method reduced the features from 9 to 4. SHAP analysis identified Glucose as having the highest impact on model predictions. Additionally, we found a link between the mean values of certain features and misclassification likelihood. This study analyzed data from 116 subjects, with the SLOA_XGB classifier achieving the best performance: 97.43% F-score, 97.14% accuracy, 97.14% precision, and 100% recall using only Glucose, Age, Resistin, and Adiponectin. These results highlight the potential for early breast cancer detection with fewer features while maintaining high predictive accuracy..",
+    "imageUrl": "Files/Research 01.png",
+    "doiUrl": "https://doi.org/10.1186/s40537-025-01132-7"
+  },
+  {
+    "id": "02",
+    "type": "Article",
+    "isCoAuthor": false,
+    "title": "Metaheuristic-Driven Feature Selection for Human Activity Recognition on KU-HAR Dataset Using XGBoost Classifier",
+    "publicationInfo": "Sensors 2025, 25(17), 5303.",
+    "metrics": "IF: 3.5, 5 Years IF: 3.7",
+    "abstract": "Human activity recognition (HAR) is an automated technique for identifying human activities using images and sensor data. Although numerous studies exist, most of the models proposed are highly complex and rely on deep learning. This research utilized two novel frameworks based on the Extreme Gradient Boosting (XGB) classifier, also known as the XGBoost classifier, enhanced with metaheuristic algorithms: Golden Jackal Optimization (GJO) and War Strategy Optimization (WARSO). This study utilized the KU-HAR dataset, which was collected from smartphone accelerometer and gyroscope sensors. We extracted 48 mathematical features to convey the HAR information. GJO-XGB achieved a mean accuracy in 10-fold cross-validation of 93.55% using only 23 out of 48 features. However, WARSO-XGB outperformed GJO-XGB and other traditional classifiers, achieving a mean accuracy, F-score, precision, and recall of 94.04%, 92.88%, 93.47%, and 92.40%, respectively. GJO-XGB has shown lower standard deviations on the test set (accuracy: 0.200; F-score: 0.285; precision: 0.388; recall: 0.336) compared to WARSO-XGB, indicating a more stable performance. WARSO-XGB exhibited lower time complexity, with average training and testing times of 30.84 s and 0.51 s, compared to 39.40 s and 0.81 s for GJO-XGB. After performing 10-fold cross-validation using various external random seeds, GJO-XGB and WARSO-XGB achieved accuracies of 93.80% and 94.19%, respectively, with a random seed = 20. SHAP identified that range_gyro_x, max_acc_z, mean_gyro_x, and some other features are the most informative features for HAR. The SHAP analysis also involved a discussion of the individual predictions, including the misclassifications.",
+    "imageUrl": "Files/Research 02.png",
+    "doiUrl": "https://doi.org/10.3390/s25175303"
+  },
+  {
+    "id": "03",
+    "type": "Article",
+    "isCoAuthor": false,
+    "title": "Gallstone Classification Using Random Forest Optimized by Sand Cat Swarm Optimization Algorithm with SHAP and DiCE-Based Interpretability",
+    "publicationInfo": "Sensors 2025, 25(17), 5489.",
+    "metrics": "IF: 3.5, 5 Years IF: 3.7",
+    "abstract": "Gallstone disease affects approximately 10–20% of the global adult population, with early diagnosis being essential for effective treatment and management. While image-based machine learning (ML) models have shown high accuracy in gallstone detection, tabular data approaches remain less explored. In this study, we have proposed a Random Forest (RF) classifier optimized using the Sand Cat Swarm Optimization (SCSO) algorithm for gallstone prediction based on a tabular dataset. Our experiments have been conducted across four frameworks: only RF without cross-validation (CV), RF with CV, RF-SCSO without CV, and RF-SCSO with CV. Only RF without CV model has achieved 81.25%, 79.07%, 85%, and 73.91% accuracy, F-score, precision, and recall, respectively, using all 38 features, while the RF with CV has obtained a 10-fold cross-validation accuracy of 78.42% using the same feature set. With SCSO-based feature reduction, the RF-SCSO without and with CV models have delivered a comparable accuracy of 79.17% and 78.32%, respectively, using only 13 features, indicating effective dimensionality reduction. SHAP analysis has identified CRP, Vitamin D, and AAST as the most influential features, and DiCE has further illustrated the model’s behavior by highlighting corrective counterfactuals for misclassified instances. These findings demonstrate the potential of interpretable, feature-optimized ML models for gallstone diagnosis using structured clinical data.",
+    "imageUrl": "Files/Research 03.png",
+    "doiUrl": "https://doi.org/10.3390/s25175489"
+  },
+  {
+    "id": "04",
+    "type": "Article",
+    "isCoAuthor": false,
+    "title": "Dengue Fever Detection Using Swarm Intelligence and XGBoost Classifier: An Interpretable Approach with SHAP and DiCE",
+    "publicationInfo": "Information 2025, 16(9), 789.",
+    "metrics": "IF: 2.9, 5 Years IF: 3",
+    "abstract": "Dengue fever is a mosquito-borne viral disease that annually affects 100–400 million people worldwide. Early detection of dengue enables easy treatment planning and helps reduce mortality rates. This study proposes three Swarm-based Metaheuristic Algorithms, Golden Jackal Optimization, Fox Optimizer, and Sea Lion Optimization, for feature selection and hyperparameter tuning, and an Extreme Gradient Boost classifier to forecast dengue fever using the Predictive Clinical Dengue dataset. Several existing models have been proposed for dengue fever classification, with some achieving high predictive performance. However, most of these studies have overlooked the importance of feature reduction, which is crucial to building efficient and interpretable models. Furthermore, prior research has lacked in-depth analysis of model behavior, particularly regarding the underlying causes of misclassification. Addressing these limitations, this study achieved a 10-fold cross-validation mean accuracy of 99.89%, an F-score of 99.92%, a precision of 99.84%, and a perfect recall of 100% by using only two features: WBC Count and Platelet Count. Notably, FOX-XGBoost and SLO-XGBoost achieved the same performance while utilizing only four and three features, respectively, demonstrating the effectiveness of feature reduction without compromising accuracy. Among these, GJO-XGBoost demonstrated the most efficient feature utilization while maintaining superior performance, emphasizing its potential for practical deployment in dengue fever diagnosis. SHAP analysis identified WBC Count as the most influential feature driving model predictions. Furthermore, DiCE explanations support this finding by showing that lower WBC Counts are associated with dengue-positive cases, whereas higher WBC Counts are indicative of dengue-negative individuals. SHAP interpreted the reasons behind misclassifications, while DiCE provided a correction mechanism by suggesting the minimal changes needed to convert incorrect predictions into correct ones.",
+    "imageUrl": "Files/Research 04.png",
+    "doiUrl": "https://doi.org/10.3390/info16090789"
+  },
+  {
+    "id": "05",
+    "type": "Article",
+    "isCoAuthor": true,
+    "title": "Breast Cancer Prediction Using Rotation Forest Algorithm Along with Finding the Influential Causes",
+    "publicationInfo": "Bioengineering 2025, 12(10), 1020.",
+    "metrics": "IF: 3.7, 5 Years IF: 3.9",
+    "abstract": "Breast cancer is a widespread disease involving abnormal (uncontrolled) growth of breast tissue cells along with the formation of a tumor and metastasis. Breast cancer cases occur mostly among women. Early detection and regular screening have significantly improved survival rates. This research classifies breast cancer and non-breast cancer cases using machine learning algorithms based on the Breast Cancer Coimbra dataset by optimizing the classifier performance and feature selection methodology. In addition, this research identifies the influential features responsible for BC classification by using diverse counterfactual explanations. The Rotation Forest classifier algorithm is used to classify breast cancer and non-breast cancer cases. The hyperparameters of this algorithm are optimized using the Optuna optimizer. Three wrapper-based feature selection techniques (Sequential Forward Selection, Sequential Backward Selection, and Exhaustive Feature Selection) are used to select the most relevant features. An ensemble environment is also created using the best feature subsets of these methods, incorporating both soft and hard voting strategies. Experimental results show that the hard voting strategy achieves an accuracy of 85.71%, F1-score of 83.87%, precision of 92.85%, and recall of 76.47%. In contrast, the soft voting strategy obtains an accuracy of 80.00%, F1-score of 77.42%, precision of 85.71%, and recall of 70.59%. These findings demonstrate that hard voting achieves noticeably better performance. The misclassification outcomes of both strategies are explored using Diverse Counterfactual Explanations, revealing that BMI and Glucose values are most influential in predicting correct classes, whereas the HOMA, Adiponectin, and Resistin values have little influence.",
+    "imageUrl": "Files/Research 05.png",
+    "doiUrl": "https://doi.org/10.3390/bioengineering12101020"
+  },
+  {
+    "id": "06",
+    "type": "Proceedings",
+    "isCoAuthor": true,
+    "title": "Reusable Block AES: A Modified AES Algorithm for the Encryption and Decryption of Sensitive Data",
+    "publicationInfo": "International Conference on Electrical, Computer and Communication Engineering (ECCE), 2025",
+    "metrics": "",
+    "abstract": "In data communication and storage, information is stored in various formats, such as documents (TXT, PDF, DOC) and images (JPG, PNG, JPEG). Critical sectors, including airports, police stations, medical centers, and document storage facilities, require secure data encryption and reliable recovery methods. While existing encryption systems can recover text and grayscale images, they often fail with multiple formats and may cause data loss in color images, which is a significant risk. Our system, built on the universally accepted Advanced Encryption Standard (AES) algorithm, addresses these issues by providing fully recoverable encryption and decryption, enhanced by a reusable block technique that increases speed and maintains data integrity. This approach ensures fast and complete recovery of diverse data types, including documents, images, Electrocardiogram (ECG) signals, and e-prescriptions, without compression. Our system outperforms standard AES, offering 100% accurate data recovery across multiple formats, and has been successfully applied in critical sectors such as telehealth and telemedicine, improving data security and performance.",
+    "imageUrl": "Files/Research 06.png",
+    "doiUrl": "https://doi.org/10.1109/ECCE64574.2025.11013963"
+  },
+  {
+    "id": "07",
+    "type": "Proceedings",
+    "isCoAuthor": true,
+    "title": "A Smartphone Application for Multiformat Data Security Using n-bit Reusable Block AES",
+    "publicationInfo": "International Conference on Electrical, Computer and Communication Engineering (ECCE), 2025",
+    "metrics": "",
+    "abstract": "Data security has become increasingly crucial, especially for personal information on devices. Mobile passwords and face locks alone are insufficient, as they do not prevent unauthorized access to stored data. Encryption is vital in data security, with AES being particularly effective. We have adapted the AES algorithm to an n-bit format for application-level use, ensuring complete data recovery without filtering, compression, or enhancement. Our reusable block method uses image color-coding features for faster encryption and decryption. We developed an Android application using this method to encrypt text and image data, which is stored securely on the device. Access to this data requires the user-provided key, ensuring the modified data remains unusable to unauthorized users. We use a fixed key and a tagging methodology for improved performance to maintain data accuracy during decryption. This application can be utilized by individuals and institutions, such as medical centers and police stations, for secure storage. Additionally, encrypted data can be transferred and decrypted on other devices using the original key, making it a versatile security protocol.",
+    "imageUrl": "Files/Research 07.png",
+    "doiUrl": "https://doi.org/10.1109/ECCE64574.2025.11013389"
+  }
+]
