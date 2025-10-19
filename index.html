@@ -160,7 +160,7 @@
 
         /* --- MOBILE RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            
+
             /* Hide custom cursor on touch devices and restore default */
             body {
                 cursor: auto;
@@ -175,18 +175,22 @@
             .timeline-wrapper {
                 padding: 0;
             }
+
             .timeline-wrapper .border-2-2 {
                 left: 1rem;
             }
 
             .timeline-wrapper .mb-8 {
                 justify-content: flex-start;
-                flex-direction: row !important; /* Force direction for all items */
+                flex-direction: row !important;
+                /* Force direction for all items */
                 padding-left: 3rem;
                 position: relative;
             }
-             .timeline-wrapper .mb-8 .order-1:first-child {
-                display: none; /* Hide empty spacer div */
+
+            .timeline-wrapper .mb-8 .order-1:first-child {
+                display: none;
+                /* Hide empty spacer div */
             }
 
             .timeline-wrapper .z-20 {
@@ -195,21 +199,92 @@
                 top: 20px;
                 transform: none;
             }
-             .timeline-wrapper .w-5\/12 {
+
+            .timeline-wrapper .w-5\/12 {
                 width: 100%;
             }
 
             /* Center research items on mobile */
-             #research-container img {
-                width: 12rem; /* 192px */
+            #research-container img {
+                width: 12rem;
+                /* 192px */
                 height: 12rem;
                 margin-left: auto;
                 margin-right: auto;
             }
+
             #research-container .md\:text-left {
                 text-align: center;
             }
 
+        }
+
+
+
+
+
+                /* Defines the rotation */
+        @keyframes rotate-glow {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Defines the fade-in (to fix the timing issue) */
+        @keyframes fade-in-glow {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 0.75;
+            }
+
+            /* Fades in to 75% opacity */
+        }
+
+        /* Styles the glow element */
+        .animated-glow {
+            /* Positioning */
+            position: absolute;
+            z-index: 0;
+            inset: -6px;
+
+            /* Shape */
+            border-radius: 9999px;
+
+            /* Gradient */
+            background: conic-gradient(from 180deg at 50% 50%,
+                    #ff0000, #ff00ff, #0000ff, #00ffff, #00ff00, #ffff00, #ff0000);
+
+            /* Glow */
+            filter: blur(100px);
+
+            /* --- THIS SOLVES YOUR TIMING PROBLEM --- */
+
+            /* 1. Start invisible */
+            opacity: 0;
+
+            /* 2. Chain two animations */
+            animation:
+                /* Animation 1: Fades in.
+                  '0.5s' = fade-in duration
+                  '1.5s' = DELAY. Change '1.5s' to match your *other* animation's duration.
+                  'forwards' = stay visible after fading in.
+                */
+                fade-in-glow 2s ease-out 1.5s forwards,
+
+                /* Animation 2: Rotates.
+                  '3s' = rotation speed
+                  '2.0s' = DELAY. This *must* be (animation 1 delay + animation 1 duration). 
+                             (e.g., 1.5s + 0.5s = 2.0s)
+                  'infinite' = loop forever.
+                */
+                rotate-glow 3s linear 2.0s infinite;
         }
     </style>
 </head>
@@ -272,10 +347,10 @@
                             href="#biodata">Bio Data</a></li>
 
                 </ul>
-                <a href="Files/Proshenjit Sarker Portfolio.pdf" download="Proshen_CV.pdf"
+                <!-- <a href="Files/Proshenjit Sarker Portfolio.pdf" download="Proshen_CV.pdf"
                     class="mx-auto lg:mx-0 mr-4 lg:mr-8 bg-indigo-600 text-white font-semibold rounded-full mt-4 lg:mt-0 py-2 px-5 shadow opacity-80 focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out interactive-hover">
                     Download CV
-                </a>
+                </a> -->
             </div>
         </div>
     </header>
@@ -319,19 +394,32 @@
                         </a>
                     </div>
                 </div>
-                <div class="w-full md:w-2/5 py-6 text-center">
+                <!-- <div class="w-full md:w-2/5 py-6 text-center">
                     <img class="w-2/3 md:w-2/3 z-50 mx-auto rounded-full shadow-2xl" src="Files/Proshejit Circle.png"
                         alt="Proshenjit Picture">
+                </div> -->
+
+                <div class="w-full md:w-2/5 py-6 text-center">
+                
+                    <div class="relative w-2/3 md:w-2/3 mx-auto">
+                
+                        <div class="animated-glow"></div>
+                
+                        <img class="relative z-10 w-full rounded-full shadow-2xl" src="Files/Proshejit Circle.png"
+                            alt="Proshenjit Picture">
+                    </div>
                 </div>
 
             </div>
         </section>
 
 
+
+
         <section id="research" class="py-20">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 flex items-center justify-center">
-                   Public
+                    Public
                     <svg class="w-7 h-7 ml-0"
                         style="animation: rotate-gear var(--header-gear-speed) linear infinite; fill: var(--header-gear-color);"
                         xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -350,6 +438,75 @@
             </div>
         </section>
 
+        <!-- Publications Under Processing Section -->
+        <section id="publications-processing" class="py-20">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+                    Processing
+                </h2>
+                <div class="glass-effect rounded-lg p-6" style="max-height: 400px; overflow-y: auto;">
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                            <h3 class="text-lg font-semibold text-white">1. Catboost with Physics-based Metaheuristics for Thyroid Cancer
+                                Recurrence Prediction</h3>
+                            <p class="text-gray-400">Status: Accepted</p>
+                            <p class="text-gray-400">Journal: BioData Mining</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                            <h3 class="text-lg font-semibold text-white">2. Dengue Fever Classification Integrating Bird Swarm Algorithm With
+                                Gradient Boosting Classifier Along With Feature Selection and SHAP–DiCE Based Interpretability</h3>
+                            <p class="text-gray-400">Status: Review Submitted</p>
+                            <p class="text-gray-400">Journal: Applied Sciences</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                            <h3 class="text-lg font-semibold text-white">3. Feature Reduction Using Swarm Optimization and Random Forest
+                                Classifiers for Early Diabetes Risk Prediction</h3>
+                            <p class="text-gray-400">Status: Major Revision Received</p>
+                            <p class="text-gray-400">Journal: Scientific Reports</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                            <h3 class="text-lg font-semibold text-white">4. Gradient Boosting Classifier with Zebra Optimization Algorithm for
+                                Pregnancy Risk Prediction</h3>
+                            <p class="text-gray-400">Status: Under Review</p>
+                            <p class="text-gray-400">Journal: ICT Express</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                            <h3 class="text-lg font-semibold text-white">5. Healthcare Data Mining Techniques</h3>
+                            <p class="text-gray-400">Status: Waiting for Initial Decision </p>
+                            <p class="text-gray-400">Journal: The Journal of Supercomputing</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                            <h3 class="text-lg font-semibold text-white">6. PCOS Classification Using Categorical Boosting Classifier Optimized
+                                by Zebra Optimization Algorithm along with Explainability</h3>
+                            <p class="text-gray-400">Status: Waiting for Initial Checking</p>
+                            <p class="text-gray-400">Journal: Recent Advances in Computer Science and Communications</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                            <h3 class="text-lg font-semibold text-white">7. Optimized Machine Learning Frameworks for Accurate and Interpretable
+                                PCOS Diagnosis</h3>
+                            <p class="text-gray-400">Status: Submitted</p>
+                            <p class="text-gray-400">Journal: International Journal of Computational Intelligence System</p>
+                        </div>
+                        
+                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                            <h3 class="text-lg font-semibold text-white">8. Metaheuristic-Based Gallstone Classification Using Rotational Forest
+                                Explained with SHAP</h3>
+                            <p class="text-gray-400">Status: Submitted</p>
+                            <p class="text-gray-400">Journal: Frontiers In Digital Health</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
 
         <section id="experience" class="py-20">
             <div class="container mx-auto px-4">
@@ -357,8 +514,7 @@
                     Experience
                 </h2>
                 <div class="relative wrap overflow-hidden p-2 md:p-10 h-full timeline-wrapper">
-                    <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border"
-                        style="left: 50%">
+                    <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%">
                     </div>
                     <div class="mb-8 flex justify-between items-center w-full right-timeline">
                         <div class="order-1 w-5/12"></div>
@@ -526,8 +682,7 @@
                     tion
                 </h2>
                 <div class="relative wrap overflow-hidden p-2 md:p-10 h-full timeline-wrapper">
-                    <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border"
-                        style="left: 50%">
+                    <div class="border-2-2 absolute border-opacity-20 border-gray-700 h-full border" style="left: 50%">
                     </div>
                     <div class="mb-8 flex justify-between items-center w-full right-timeline">
                         <div class="order-1 w-5/12"></div>
@@ -672,7 +827,7 @@
         document.getElementById('nav-toggle').onclick = function () {
             document.getElementById("nav-content").classList.toggle("hidden");
         }
-        
+
         // --- MODIFICATION: Check if the user is on a mobile device ---
         const isMobile = /Mobi|Android/i.test(navigator.userAgent);
 
@@ -744,7 +899,7 @@
             // Click Spark Effect
             document.addEventListener('click', function (e) {
                 const sparkCount = 50;
-                
+
                 for (let i = 0; i < sparkCount; i++) {
                     const spark = document.createElement('div');
                     spark.style.position = 'fixed';
@@ -782,7 +937,7 @@
                 }
             });
         }
-        
+
         // --- ScrollReveal Animations ---
         const sr = ScrollReveal({
             distance: '50px',
@@ -823,7 +978,14 @@
 
         // Career Advisor animation
         sr.reveal('#career p, #career textarea, #career button', { origin: 'bottom', interval: 200, viewFactor: 0.4 });
-        
+
+        // Add this to your existing ScrollReveal code
+            sr.reveal('#publications-processing .glass-effect', {
+                origin: 'bottom',
+                viewFactor: 0.3,
+                duration: 800
+            });
+
         // Hide nav on scroll
         var lastScrollTop = 0;
         var navbar = document.querySelector('header');
@@ -1072,5 +1234,4 @@
 </body>
 
 </html>
-
 
