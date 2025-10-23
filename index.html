@@ -286,6 +286,24 @@
                 */
                 rotate-glow 3s linear 2.0s infinite;
         }
+
+        .status-blink {
+        animation: gentleBlink 4s infinite;
+    }
+
+    @keyframes gentleBlink {
+
+        0%,
+        100% {
+            color: red;
+            /* Soft indigo */
+        }
+
+        50% {
+            color: #c4b5fd;
+            /* Slightly brighter */
+        }
+    }
     </style>
 </head>
 
@@ -438,72 +456,89 @@
             </div>
         </section>
 
-        <!-- Publications Under Processing Section -->
-        <section id="publications-processing" class="py-20">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
-                    Processing
-                </h2>
-                <div class="glass-effect rounded-lg p-6" style="max-height: 400px; overflow-y: auto;">
-                    <div class="space-y-4">
-                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
-                            <h3 class="text-lg font-semibold text-white">1. Catboost with Physics-based Metaheuristics for Thyroid Cancer
-                                Recurrence Prediction</h3>
-                            <p class="text-gray-400">Status: Accepted</p>
-                            <p class="text-gray-400">Journal: BioData Mining</p>
-                        </div>
-                        
-                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
-                            <h3 class="text-lg font-semibold text-white">2. Dengue Fever Classification Integrating Bird Swarm Algorithm With
-                                Gradient Boosting Classifier Along With Feature Selection and SHAP–DiCE Based Interpretability</h3>
-                            <p class="text-gray-400">Status: Minor Revision Received</p>
-                            <p class="text-gray-400">Journal: Applied Sciences</p>
-                        </div>
-                        
-                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
-                            <h3 class="text-lg font-semibold text-white">3. Feature Reduction Using Swarm Optimization and Random Forest
-                                Classifiers for Early Diabetes Risk Prediction</h3>
-                            <p class="text-gray-400">Status: Major Revision Received</p>
-                            <p class="text-gray-400">Journal: Scientific Reports</p>
-                        </div>
-                        
-                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
-                            <h3 class="text-lg font-semibold text-white">4. Gradient Boosting Classifier with Zebra Optimization Algorithm for
-                                Pregnancy Risk Prediction</h3>
-                            <p class="text-gray-400">Status: Under Review</p>
-                            <p class="text-gray-400">Journal: ICT Express</p>
-                        </div>
-                        
-                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
-                            <h3 class="text-lg font-semibold text-white">5. Healthcare Data Mining Techniques</h3>
-                            <p class="text-gray-400">Status: Waiting for Initial Decision </p>
-                            <p class="text-gray-400">Journal: The Journal of Supercomputing</p>
-                        </div>
-                        
-                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
-                            <h3 class="text-lg font-semibold text-white">6. PCOS Classification Using Categorical Boosting Classifier Optimized
-                                by Zebra Optimization Algorithm along with Explainability</h3>
-                            <p class="text-gray-400">Status: Waiting for Initial Checking</p>
-                            <p class="text-gray-400">Journal: Recent Advances in Computer Science and Communications</p>
-                        </div>
-                        
-                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
-                            <h3 class="text-lg font-semibold text-white">7. Optimized Machine Learning Frameworks for Accurate and Interpretable
-                                PCOS Diagnosis</h3>
-                            <p class="text-gray-400">Status: Submitted</p>
-                            <p class="text-gray-400">Journal: International Journal of Computational Intelligence System</p>
-                        </div>
-                        
-                        <div class="border-l-4 border-indigo-500 pl-4 py-2">
-                            <h3 class="text-lg font-semibold text-white">8. Metaheuristic-Based Gallstone Classification Using Rotational Forest
-                                Explained with SHAP</h3>
-                            <p class="text-gray-400">Status: Submitted</p>
-                            <p class="text-gray-400">Journal: Frontiers In Digital Health</p>
-                        </div>
-                    </div>
+<!-- Publications Under Processing Section -->
+<section id="publications-processing" class="py-20">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">
+            Processing
+        </h2>
+        <div class="glass-effect rounded-lg p-6" style="max-height: 400px; overflow-y: auto;">
+            <div class="space-y-4">
+
+                <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                    <h3 class="text-lg font-semibold text-white">
+                        1. Catboost with Physics-based Metaheuristics for Thyroid Cancer Recurrence Prediction
+                    </h3>
+                    <p class="status-blink text-gray-400">Status: Accepted</p>
+                    <p class="text-gray-400">Journal: BioData Mining</p>
                 </div>
+
+                <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                    <h3 class="text-lg font-semibold text-white">
+                        2. Dengue Fever Classification Integrating Bird Swarm Algorithm With Gradient Boosting
+                        Classifier Along With Feature Selection and SHAP–DiCE Based Interpretability
+                    </h3>
+                    <p class="status-blink text-gray-400">Status: Accepted</p>
+                    <p class="text-gray-400">Journal: Applied Sciences</p>
+                </div>
+
+                <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                    <h3 class="text-lg font-semibold text-white">
+                        3. Feature Reduction Using Swarm Optimization and Random Forest Classifiers for Early Diabetes
+                        Risk Prediction
+                    </h3>
+                    <p class="status-blink text-gray-400">Status: Major Revision Received</p>
+                    <p class="text-gray-400">Journal: Scientific Reports</p>
+                </div>
+
+                <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                    <h3 class="text-lg font-semibold text-white">
+                        4. Gradient Boosting Classifier with Zebra Optimization Algorithm for Pregnancy Risk Prediction
+                    </h3>
+                    <p class="status-blink text-gray-400">Status: Under Review</p>
+                    <p class="text-gray-400">Journal: ICT Express</p>
+                </div>
+
+                <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                    <h3 class="text-lg font-semibold text-white">
+                        5. Healthcare Data Mining Techniques
+                    </h3>
+                    <p class="status-blink text-gray-400">Status: Waiting for Initial Decision</p>
+                    <p class="text-gray-400">Journal: The Journal of Supercomputing</p>
+                </div>
+
+                <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                    <h3 class="text-lg font-semibold text-white">
+                        6. PCOS Classification Using Categorical Boosting Classifier Optimized by Zebra Optimization
+                        Algorithm along with Explainability
+                    </h3>
+                    <p class="status-blink text-gray-400">Status: Initial Revision Received</p>
+                    <p class="text-gray-400">Journal: Recent Advances in Computer Science and Communications</p>
+                </div>
+
+                <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                    <h3 class="text-lg font-semibold text-white">
+                        7. Optimized Machine Learning Frameworks for Accurate and Interpretable PCOS Diagnosis
+                    </h3>
+                    <p class="status-blink text-gray-400">Status: Submitted</p>
+                    <p class="text-gray-400">Journal: International Journal of Computational Intelligence System</p>
+                </div>
+
+                <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                    <h3 class="text-lg font-semibold text-white">
+                        8. Metaheuristic-Based Gallstone Classification Using Rotational Forest Explained with SHAP
+                    </h3>
+                    <p class="status-blink text-gray-400">Status: Submitted</p>
+                    <p class="text-gray-400">Journal: Frontiers In Digital Health</p>
+                </div>
+
             </div>
-        </section>
+        </div>
+    </div>
+</section>
+
+
+
 
 
 
@@ -1234,5 +1269,4 @@
 </body>
 
 </html>
-
 
