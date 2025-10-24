@@ -1,6 +1,5 @@
 [
   {
-    "id": "01",
     "type": "Article",
     "isCoAuthor": false,
     "title": "Breast cancer prediction with feature-selected XGB classifier, optimized by metaheuristic algorithms",
@@ -11,7 +10,6 @@
     "doiUrl": "https://doi.org/10.1186/s40537-025-01132-7"
   },
   {
-    "id": "02",
     "type": "Article",
     "isCoAuthor": false,
     "title": "Metaheuristic-Driven Feature Selection for Human Activity Recognition on KU-HAR Dataset Using XGBoost Classifier",
@@ -22,7 +20,6 @@
     "doiUrl": "https://doi.org/10.3390/s25175303"
   },
   {
-    "id": "03",
     "type": "Article",
     "isCoAuthor": false,
     "title": "Gallstone Classification Using Random Forest Optimized by Sand Cat Swarm Optimization Algorithm with SHAP and DiCE-Based Interpretability",
@@ -33,7 +30,6 @@
     "doiUrl": "https://doi.org/10.3390/s25175489"
   },
   {
-    "id": "04",
     "type": "Article",
     "isCoAuthor": false,
     "title": "Dengue Fever Detection Using Swarm Intelligence and XGBoost Classifier: An Interpretable Approach with SHAP and DiCE",
@@ -44,7 +40,6 @@
     "doiUrl": "https://doi.org/10.3390/info16090789"
   },
   {
-    "id": "05",
     "type": "Article",
     "isCoAuthor": true,
     "title": "Breast Cancer Prediction Using Rotation Forest Algorithm Along with Finding the Influential Causes",
@@ -55,7 +50,6 @@
     "doiUrl": "https://doi.org/10.3390/bioengineering12101020"
   },
   {
-    "id": "06",
     "type": "Proceedings",
     "isCoAuthor": true,
     "title": "Reusable Block AES: A Modified AES Algorithm for the Encryption and Decryption of Sensitive Data",
@@ -66,7 +60,6 @@
     "doiUrl": "https://doi.org/10.1109/ECCE64574.2025.11013963"
   },
   {
-    "id": "07",
     "type": "Proceedings",
     "isCoAuthor": true,
     "title": "A Smartphone Application for Multiformat Data Security Using n-bit Reusable Block AES",
@@ -76,8 +69,7 @@
     "imageUrl": "Files/Research 07.png",
     "doiUrl": "https://doi.org/10.1109/ECCE64574.2025.11013389"
   },
-    {
-   "id": "08",
+  {
     "type": "Article",
     "isCoAuthor": true,
     "title": "Dengue Fever Classification Integrating Bird Swarm Algorithm With Gradient Boosting Classifier Along With Feature Selection and SHAP–DiCE Based Interpretability",
@@ -87,5 +79,4 @@
     "imageUrl": "Files/Research 08.png",
     "doiUrl": "https://doi.org/10.3390/app152111413"
   }
-
 ]
