@@ -1026,35 +1026,55 @@
         });
 
         // --- Dynamic Publications from JSON ---
-        async function loadPublications() {
-            const researchContainer = document.getElementById('research-container');
+            async function loadPublications() {
+                const researchContainer = document.getElementById('research-container');
 
-            try {
-                const response = await fetch('Files/Publications.json');
-                if (!response.ok) {
-                    throw new Error('Failed to load publications');
-                }
+                try {
+                    const response = await fetch('Files/Publications.json');
+                    if (!response.ok) {
+                        throw new Error('Failed to load publications');
+                    }
 
-                const publications = await response.json();
+                    let publications = await response.json();
 
-                // Remove loader
-                researchContainer.innerHTML = '';
+                    // --- Helper function to extract numeric Impact Factor ---
+                    const getIF = (metrics) => {
+                        if (!metrics) return 0;
+                        const match = metrics.match(/IF:\s*([\d.]+)/i);
+                        return match ? parseFloat(match[1]) : 0;
+                    };
 
-                // Create publication elements
-                publications.forEach((pub, index) => {
-                    const pubElement = document.createElement('div');
-                    pubElement.className = 'glass-effect p-6 rounded-lg interactive-hover flex flex-col md:flex-row items-center gap-6 mb-8';
+                    // --- Sort journals first by IF (descending), then proceedings last ---
+                    publications.sort((a, b) => {
+                        const ifA = getIF(a.metrics);
+                        const ifB = getIF(b.metrics);
 
-                    // Format the display based on the actual JSON structure
-                    const publicationInfo = pub.publicationInfo || pub.journal || '';
-                    const metrics = pub.metrics || '';
+                        // Journals (with IF) before Proceedings (without IF)
+                        if (ifA === 0 && ifB === 0) return 0;
+                        if (ifA === 0) return 1;   // A has no IF → goes after
+                        if (ifB === 0) return -1;  // B has no IF → goes before
 
-                    // Combine publication info and metrics
-                    const displayText = metrics ?
-                        `${publicationInfo} ${metrics}` :
-                        publicationInfo;
+                        // Both have IF → sort descending
+                        return ifB - ifA;
+                    });
 
-                    pubElement.innerHTML = `
+                    // Remove loader
+                    researchContainer.innerHTML = '';
+
+                    // --- Create publication cards dynamically ---
+                    publications.forEach((pub, index) => {
+                        const pubElement = document.createElement('div');
+                        pubElement.className =
+                            'glass-effect p-6 rounded-lg interactive-hover flex flex-col md:flex-row items-center gap-6 mb-8';
+
+                        const publicationInfo = pub.publicationInfo || '';
+                        const metrics = pub.metrics || '';
+
+                        const displayText = metrics
+                            ? `${publicationInfo} ${metrics}`
+                            : publicationInfo;
+
+                        pubElement.innerHTML = `
                 <img src="${pub.imageUrl}" alt="${pub.title} Visual"
                     class="w-32 h-32 md:w-48 md:h-48 object-cover rounded-lg flex-shrink-0">
                 <div class="text-center md:text-left">
@@ -1073,22 +1093,26 @@
                         </a>
                         <button class="summarize-btn ml-4 text-indigo-400 hover:text-indigo-300">✨ Summarize with AI</button>
                     </div>
-                    ${pub.coAuthor ? `<p class="mt-2 text-sm text-gray-500"><em>${pub.coAuthor}</em></p>` : ''}
+                    ${pub.isCoAuthor ? `<p class="mt-2 text-sm text-gray-500"><em>Co-Author</em></p>` : ''}
                 </div>
             `;
 
-                    researchContainer.appendChild(pubElement);
-                });
+                        researchContainer.appendChild(pubElement);
+                    });
 
-                // Reinitialize ScrollReveal for new elements
-                sr.reveal('#research .glass-effect', { origin: 'bottom', viewFactor: 0.2, interval: 200 });
+                    // Reinitialize ScrollReveal
+                    sr.reveal('#research .glass-effect', {
+                        origin: 'bottom',
+                        viewFactor: 0.2,
+                        interval: 200
+                    });
 
-                // Reattach event listeners to the new buttons
-                attachSummarizeListeners();
+                    // Reattach summarize button events
+                    attachSummarizeListeners();
 
-            } catch (error) {
-                console.error('Error loading publications:', error);
-                researchContainer.innerHTML = `
+                } catch (error) {
+                    console.error('Error loading publications:', error);
+                    researchContainer.innerHTML = `
             <div class="text-center text-red-400">
                 <p>Failed to load publications. Please try again later.</p>
                 <button onclick="loadPublications()" class="mt-4 bg-indigo-600 text-white font-bold rounded-full py-2 px-4 interactive-hover">
@@ -1096,11 +1120,12 @@
                 </button>
             </div>
         `;
+                }
             }
-        }
 
-        // Load publications when the page loads
-        document.addEventListener('DOMContentLoaded', loadPublications);
+            // Load publications on page ready
+            document.addEventListener('DOMContentLoaded', loadPublications);
+
 
         // --- Gemini API Integration ---
 
