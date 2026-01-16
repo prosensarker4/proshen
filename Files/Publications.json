@@ -78,8 +78,18 @@
     "abstract": "Dengue is a life-threatening disease that is transmitted by mosquitoes. Dengue fever has no proper treatment. Early, proper diagnosis is essential to minimize complications and enhance outcomes in patients. This research uses a clinical and hematological dataset of dengue to assess the effectiveness of the Gradient Boosting (GB) classification model with and without feature selection. It initially employs a standalone GB model, achieving impeccable results for classification, at 100% accuracy, F1-score, precision, and recall. In addition, the Bird Swarm Algorithm (BSA)-based metaheuristic technique is implemented on the GB classifier to execute wrapper-based feature selection so that features are reduced and achieve better results. The BSA-GB model yielded an accuracy of 99.49%, F1-score of 99.62%, recall of 99.24%, and precision of 100%, but it only selected five features in total. An additional test with a five-fold cross-validation was employed for better performance and model evaluation. Folds 1 and 2 showed especially good results. Although fold 2 selected only four features, it still showed high results, compared to fold 1, which selected five features. In this context, fold 2 achieved an accuracy of 99.49%, F1-score of 99.65%, recall of 99.30%, and precision of 100%. Means of hyperparameters were also calculated across folds to make a generalized GB model, which maintained 99.49% of accuracy with just three features, namely, Hemoglobin, WBC Count, and Platelet Count. To enhance transparency, counterfactual explanations were performed to analyze the misclassified cases, which indicated that minimum changes in input features modify the predictions. Also, an evaluation of the SHAP value result designated WBC Count and Platelet Count as the most important features.",
     "imageUrl": "Files/Research 08.png",
     "doiUrl": "https://doi.org/10.3390/app152111413"
-   },
-   {
+  },
+  {
+    "type": "Article",
+    "isCoAuthor": false,
+    "title": "CatBoost with physics-based metaheuristics for thyroid cancer recurrence prediction",
+    "publicationInfo": " BioData Mining, Vol. 18, Article Num. 84 (2025).",
+    "metrics": "IF: 6.1 (2024), 5 Years IF: 5.3 (2024)",
+     "abstract": "Thyroid Cancer (TC) is the uncontrolled growth of carcinogenic cells in the thyroid gland, with a higher recurrence rate than other cancers. Early detection of TC recurrence (TCR) is crucial for timely intervention. This study develops machine-learning algorithms that reduce features while maintaining high performance. Previous studies on the Differentiated Thyroid Cancer Recurrence (DTCR) dataset struggled to improve performance with feature reduction, and misclassification causes remained unexplored. This work proposes three Physics-based Metaheuristic Algorithms (PBMHAs)—Energy Valley Optimization (EVOA), Equilibrium Optimization (EOA), and Electromagnetic Field Optimization (EFOA)—combined with the Categorical Boosting (CatBoost) classifier. SHAP is used to analyze feature importance. CatBoost without optimization (Only CB) achieved 95.83% Accuracy, 92.42% F-score, 96.29% Precision, and 89.27% Recall using all 16 features. After optimization, EVOA_CB reached 96.35% mean accuracy, while EOA_CB and EFOA_CB achieved 96.17%. EOA_CB excluded 11 less important features, and EFOA_CB attained the highest mean AUC of 0.994 with the lowest computational times. Additionally, this work provides insights into the factors contributing to misclassification. Using a 30:70 train-test split over 5 folds, EVOA_CB performed best on six selected features, with 96.35% Accuracy, 93.34% F-score, and 96.19% Precision. SHAP highlighted response, risk, and N as the most important features. These findings support early, efficient detection of TC recurrence with fewer features.",
+    "imageUrl": "Files/Research 09.png",
+    "doiUrl": "https://doi.org/10.1186/s13040-025-00494-1"
+  },
+  {
     "type": "Article",
     "isCoAuthor": true,
     "title": "Metaheuristic-based gallstone classification using rotational forest explained with SHAP",
@@ -90,7 +100,3 @@
     "doiUrl": "https://doi.org/10.3389/fdgth.2025.1727559"
   }
 ]
-
-
-
-
